@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { NoteListComponent } from './note-list/note-list.component';
+import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+
+const routes: Routes = [
+  {  path: '', component: MainLayoutComponent, children: [
+    { path: '', component: NoteListComponent }  ] //inject noteList in MainLayout by routing
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
