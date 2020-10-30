@@ -7,5 +7,10 @@
 }
 
 .note-list{
-    margin-top: 23px; //move away list from input filter
+    margin-top: 23px; //separate list from input filter
+}
+
+app-note-card{
+    display: block; // allow separation with margin-bottom
+    margin-bottom: 15px
 }

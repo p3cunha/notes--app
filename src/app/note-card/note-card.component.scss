@@ -1,6 +1,7 @@
 @import '../../main-styles';
 
-.note-card-container{
+.note-card-container {
+    position: relative; //allow child elements (x-button) to have an abs position in each card
     background: white; //cause contrast between card and div (cuz the border)
 
     border-radius: 5px; //border rounding
@@ -8,12 +9,17 @@
     box-shadow: 0px 2px 15px 2px rgba(black, 0.068); 
     transition: box-shadow 0.3s ease-out;
 
-    &:hover { // all elements of note-card on hover
+    &:hover { // all elements of note-card on hover - do not include input (note-list component)
         box-shadow: 0px 0px 0px 3px rgba(black, 0.068);
         cursor: pointer;
+
+        .x-button{ // hover on card-container
+            opacity: 1;
+            transform: scale(1); // final animation full scale
+
+            transition-delay: 0.35ms; // delay animation to happen after box-shadow hover
+        }
     }
-
-
 
     .note-card-content {
     
@@ -24,5 +30,70 @@
             font-size: 18pt;
             font-weight: bold;
         }
+
+        .note-card-body{
+            position: relative; //allow child elements to have an abs position 
+
+            color: #555; // more sutil color of body text
+
+            // MAXIMUM HEIGHT BEFORE FADE OUT TRUNCATION
+            max-height: 80px;
+            overflow: hidden; // hidden text that pass max height
+
+            // truncation design of hidden text when max-height is passed
+            .fade-out-truncation{
+                position: absolute;
+
+                pointer-events: none; //allow pointer select content under truncation
+
+                bottom: 0; // totalmente no bottom
+
+                height: 50%; // total height - half height of note-card-body 
+                width: 100%;
+                // linear disappearance of content at 0, 50(80% white) and 100%(total white) in fade-out-truncation
+                background: linear-gradient(to bottom, rgba(white, 0) 0%, rgba(white, 0.8) 50%, rgba(white, 1) 100%) ;
+            }
+            
+        }
     }
+
+}
+
+.x-button{
+
+    position: absolute; //position absolute inside parent div
+
+    //12 px from top
+    top: 12px;
+
+    // 12 px from right
+    right: 12px;
+
+    //size
+    height: 34px;
+    width: 34px;
+
+    background-color: $light-red;
+    background-image: url(../../assets/images/delete_icon.svg); // x image
+    background-repeat: no-repeat; // only one X image
+    background-position: center; // centralize X on parameters
+
+    border-radius: 4px;
+
+    // button hidden by default
+    opacity: 0;
+    transition: opacity ease-out 0.2s, transform ease-out 0.2s ;
+
+    //reduce image to growth animation on card-container hover (0.35 -> 1) upthere
+    transform: scale(0.35);
+
+    &:hover{
+        background-color: darken($light-red, 2%); //darken bc color in 2%
+    }
+
+    //on click
+    &:active{
+        background-color: darken($light-red, 4%);// darken on click
+    }
+
 }
