@@ -4,11 +4,11 @@
 
     <!-- WRITED CONTENT OF CARD -->
     <div class="note-card-content">
-        <h1 class="note-card-title">Titulo</h1>
+        <h1 class="note-card-title"> {{ title }} </h1>
 
-        <div #textBody class="note-card-body">
+        <div #cardBody class="note-card-body">
             
-            <p>Content Content Content  </p>
+            <p> {{ body }} </p>
 
             <!-- FADE OUT DESIGN WHEN TEXT PASS MAX HEIGHT OF BODY -->
             <div #truncator class="fade-out-truncation"></div>

@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteListComponent implements OnInit {
 
+  cardTitle = 'title'
+  cardBody = 'body'
+
   constructor() { }
 
   ngOnInit(): void {

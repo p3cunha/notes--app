@@ -2,7 +2,7 @@
 
 .note-card-container {
     position: relative; //allow child elements (x-button) to have an abs position in each card
-    background: white; //cause contrast between card and div (cuz the border)
+    background: white; //cause contrast between each card and div background (cuz of the border)
 
     border-radius: 5px; //border rounding
 
@@ -15,7 +15,7 @@
 
         .x-button{ // hover on card-container
             opacity: 1;
-            transform: scale(1); // final animation full scale
+            transform: scale(1); // final animation full scale on card hover
 
             transition-delay: 0.35ms; // delay animation to happen after box-shadow hover
         }
@@ -38,7 +38,7 @@
 
             // MAXIMUM HEIGHT BEFORE FADE OUT TRUNCATION
             max-height: 80px;
-            overflow: hidden; // hidden text that pass max height
+            overflow: hidden; // hidden text that pass max-height
 
             // truncation design of hidden text when max-height is passed
             .fade-out-truncation{
@@ -48,7 +48,7 @@
 
                 bottom: 0; // totalmente no bottom
 
-                height: 50%; // total height - half height of note-card-body 
+                height: 50%; // total width - half height of note-card-body 
                 width: 100%;
                 // linear disappearance of content at 0, 50(80% white) and 100%(total white) in fade-out-truncation
                 background: linear-gradient(to bottom, rgba(white, 0) 0%, rgba(white, 0.8) 50%, rgba(white, 1) 100%) ;
@@ -70,8 +70,8 @@
     right: 12px;
 
     //size
-    height: 34px;
-    width: 34px;
+    height: 30px;
+    width: 30px;
 
     background-color: $light-red;
     background-image: url(../../assets/images/delete_icon.svg); // x image
@@ -81,11 +81,12 @@
     border-radius: 4px;
 
     // button hidden by default
+    // opacity: button visibility ; transform scale: button growth 
     opacity: 0;
     transition: opacity ease-out 0.2s, transform ease-out 0.2s ;
 
-    //reduce image to growth animation on card-container hover (0.35 -> 1) upthere
-    transform: scale(0.35);
+    //reduce image to growth animation on card-container hover (0.35 -> 1) on card hover
+    transform: scale(0.30);
 
     &:hover{
         background-color: darken($light-red, 2%); //darken bc color in 2%
