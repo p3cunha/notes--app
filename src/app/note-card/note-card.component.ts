@@ -13,7 +13,7 @@ export class NoteCardComponent implements OnInit {
   //@Input: parent --data flow--> child
 
   //Catch #truncator & #cardBody from HTML and set as a view element
-  // @ViewChild require 2 parameters, 'selector' and static (true for access on ngOnInit)
+  //@ViewChild require 2 parameters, 'selector' and static (true for access on ngOnInit)
   @ViewChild('truncator', {static: true}) truncator: ElementRef<HTMLElement>;
   @ViewChild('cardBody', {static: true}) cardBody: ElementRef<HTMLElement>;
 
