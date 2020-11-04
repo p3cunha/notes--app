@@ -1,4 +1,6 @@
-# NotesApp
+# NotesApp - In progress
+
+Basic Notes App. Built so far with Angular CLI, CSS framework Bulma and RxJS library.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 
