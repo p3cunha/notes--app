@@ -18,4 +18,9 @@ export class NoteListComponent implements OnInit {
     this.notes = this.notesService.getAll() 
   }
 
+  //receive event emitted from X-button in child component and call function below
+  receiveDeleteEventFromXButton(id: number){
+    this.notesService.delete(id)
+  }
+
 }

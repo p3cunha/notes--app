@@ -1,24 +1,26 @@
 <!-- THIS IS ONE CARD -->
 <div #container class="note-card-container">
 
-    <!-- CONTENT OF CARD SCOLP -->
+<!-- ONLY CLICKs ON note DIV REDIRECT TO note-details, NOT CLICKs ON x-button -->
+    <a [routerLink]="cardLink">
+   <!-- CONTENT OF CARD SCOLP -->
     <!-- CONTENT OF title AND body (@Input()) CAME FROM PARENT note-list -->
-    <div class="note-card-content">
-        <h1 class="note-card-title"> {{ title }} </h1>
+        <div class="note-card-content">
+            <h1 class="note-card-title"> {{ title }} </h1>
 
-        <div #cardBody class="note-card-body">
-            
-            <p> {{ body }} </p>
+            <div #cardBody class="note-card-body">
+                
+                <p> {{ body }} </p>
 
-            <!-- FADE OUT DESIGN WHEN TEXT PASS MAX HEIGHT OF BODY -->
-            <div #truncator class="fade-out-truncation"></div>
+                <!-- FADE OUT DESIGN WHEN TEXT PASS MAX HEIGHT OF BODY -->
+                <div #truncator class="fade-out-truncation"></div>
+            </div>
         </div>
-
-    </div>
+    </a>
     <!-- ----------------------- -->
 
     <!-- X-BUTTON THAT DELETE NOTE -->
-    <div class="x-button" (click)="delete()">
+    <div class="x-button" (click)="xButtonClick()">
 
     </div>
 

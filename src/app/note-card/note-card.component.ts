@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { NotesService } from '../shared/notes.service';
 
 @Component({
@@ -8,9 +8,14 @@ import { NotesService } from '../shared/notes.service';
 })
 export class NoteCardComponent implements OnInit {
 
+  //@Input: parent --data flow--> child
   @Input() title: string; // turn these properties dynamic
   @Input() body: string;  // the parent component note-list set the data of these properties
-  //@Input: parent --data flow--> child
+  @Input() cardLink: string;
+
+  //@Output: child --data flow--> parent
+  //'delete' will be readen in (eventBinding) in parent
+  @Output('delete') delete: EventEmitter<void> = new EventEmitter<void>();
 
   //Catch #truncator & #cardBody from HTML and set as a view element
   //@ViewChild require 2 parameters, 'selector' and static (true for access on ngOnInit)
@@ -39,8 +44,9 @@ export class NoteCardComponent implements OnInit {
       }
   }
 
-  delete(){
-    // this.notesService.delete()
+  xButtonClick(){
+    //emit event 'delete' read on (delete) eventBinding in parent
+    this.delete.emit()
   }
 
 

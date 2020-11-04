@@ -14,9 +14,12 @@
         </div>
           <!-- NOTES LIST ITSELF -->
           <div class="notes-list">
+
+            <!-- cardLink ITS A routerLink REFERENCED IN appNoteCard -->
             <app-note-card 
             *ngFor="let note of notes, index as i" 
-            [routerLink]="i"
+            [cardLink]="i"
+            (delete)="receiveDeleteEventFromXButton(i)"
             [title]="note.title" 
             [body]="note.body">
             </app-note-card>

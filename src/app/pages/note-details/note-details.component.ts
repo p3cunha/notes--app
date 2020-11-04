@@ -23,7 +23,7 @@ export class NoteDetailsComponent implements OnInit {
     //CHECK IF WE ARE CREATING A NEW note OR EDITING AN EXISTING ONE
     this.route.params.subscribe((params: Params) => {
       this.note = new Note(); // start form correctly
-      if (params.id){ // if have Id
+      if (params.id){ // if have Id - existing one
         this.note = this.notesService.get(params.id); //push into note according id
         this.noteId = params.id; //push id into noteId
         this.new = false  //its not a new note
