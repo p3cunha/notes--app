@@ -11,6 +11,10 @@ export class NotesService {
 
   constructor() { }
 
+  getAll(){
+    return this.notes
+  }
+
   get(id: number){
     return this.notes[id]
   }
@@ -21,7 +25,7 @@ export class NotesService {
 
   add(note: Note){
     let noteLength = this.notes.push(note) // push note into var
-    let index = noteLength -1 // id - index
+    let index = noteLength -1 // id = index
     return index
   }
 

@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { NotesService } from '../shared/notes.service';
 
 @Component({
   selector: 'app-note-card',
@@ -16,7 +17,8 @@ export class NoteCardComponent implements OnInit {
   @ViewChild('truncator', {static: true}) truncator: ElementRef<HTMLElement>;
   @ViewChild('cardBody', {static: true}) cardBody: ElementRef<HTMLElement>;
 
-  constructor( private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, 
+              private notesService: NotesService) { }
 
   ngOnInit() {
     // check if theres a text overflow on card-body, if not, then hide the truncator
@@ -35,6 +37,10 @@ export class NoteCardComponent implements OnInit {
       // else, hide the fade out truncator
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
       }
+  }
+
+  delete(){
+    // this.notesService.delete()
   }
 
 

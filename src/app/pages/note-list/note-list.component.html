@@ -1,24 +1,24 @@
-<!-- CENTER COLUMN -->
+<!-- CENTER COLUMN - VISUALIZATION OF FILTER INPUT + ALL NOTES -->
 <div class="main-container">
 
-    <!-- TOP INPUT -->
     <div class="search-bar-container">
+        <!-- TOP INPUT -->
         <div class="field">
             <p class="control has-icons-left">
               <input class="input" type="password" placeholder="Filter">
               <span class="icon is-small is-left">
-                  <!-- ICON FROM FONT AWESOME, IMPORTED IN INDEX HTML -->
+                  <!-- ICON FROM FONT AWESOME, IMPORTED IN index.html -->
                 <i class="fas fa-search"></i>
               </span>
             </p>
+        </div>
+          <!-- NOTES LIST ITSELF -->
+          <div class="notes-list">
+            <app-note-card *ngFor="let note of notes" [title]="note.title" [body]="note.body">
+            </app-note-card>
           </div>
 
-          <div class="notes-list">
-            <app-note-card [title]="cardTitle" [body]="cardBody"></app-note-card>
-            <app-note-card [title]="cardTitle" [body]="cardBody"></app-note-card>
-            <app-note-card [title]="cardTitle" [body]="cardBody"></app-note-card>
-            <app-note-card [title]="cardTitle" [body]="cardBody"></app-note-card>
-          </div>
+          <button class="button is-primary" routerLink="new">+ Add</button>
 
     </div>
 
