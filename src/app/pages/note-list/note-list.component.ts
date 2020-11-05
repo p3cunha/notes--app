@@ -54,7 +54,7 @@ import { NotesService } from 'src/app/shared/notes.service';
           transform: 'scale(0.68)',
           opacity: 0,
         })),
-        //THEN ANIMATE THE SPACING (HEIGHT, MARGIN, PADDING)
+        //THEN ANIMATE THE SPACING (HEIGHT, MARGIN, PADDING) - TOTAL DISAPPEARING 
         animate('150ms', style({
           height: 0,
           'margin-bottom': 0,
@@ -89,17 +89,70 @@ import { NotesService } from 'src/app/shared/notes.service';
 export class NoteListComponent implements OnInit {
 
   notes: Note[] = new Array<Note>();
+  filteredNotes: Note[] = new Array<Note>(); // created here to be used in template
 
   constructor(private notesService: NotesService) { }
 
   ngOnInit(): void {
     //PUT EXISTENT notes FROM SERVICE IN this.notes TO DISPLAY ONE BY ONE IN *ngFor
-    this.notes = this.notesService.getAll() 
+    this.notes = this.notesService.getAll(); 
+    this.filteredNotes = this.notes;
   }
 
   //receive event emitted from X-button in child component and call function below
   receiveDeleteEventFromXButton(id: number){
     this.notesService.delete(id)
   }
+
+  filter(query: string){
+    query = query.toLowerCase().trim();
+
+    let allResults: Note[] = new Array<Note>();
+    //remove searched terms spaces
+    let terms: string[] = query.split(' ');
+    
+    //remove duplicated terms
+    terms = this.removeDuplicate(terms);
+
+    //find notes that matched with terms searched and put them in filteredNotes list
+    terms.forEach(term => {
+      // store terms that matched
+      let matchedResults = this.matchingNotes(term);
+      // append to allResults array
+      allResults = [...allResults, ...matchedResults];
+      // remove duplicated results that would be showed on UI
+      let uniqueResults = this.removeDuplicate(allResults);
+      //put them in filteredNotes list
+      this.filteredNotes = uniqueResults;
+    })
+  }
+
+
+
+  removeDuplicate(arr: Array<any>) : Array<any> { //receive array-like elements
+    // set var as a Set (allow store unique values of any type)
+    let uniqueElements : Set<any> = new Set<any>();
+    arr.forEach(e => uniqueElements.add(e));
+    return Array.from(uniqueElements);
+  }
+
+  //search for terms that match with notes content
+  matchingNotes(query: string): Array<Note> {
+    //just garant that searched term will be in lowerCase
+    query = query.toLowerCase().trim(); 
+
+    let matchedNotes = this.notes.filter(note => {
+      //if exists a note in note[] & includes searched term, return true and add in matchedNotes
+      if (note.title && note.title.includes(query)) {
+        return true
+      }
+      if (note.body && note.body.includes(query)) {
+        return true
+      }
+      return false
+    });
+    return matchedNotes
+  }
+
 
 }
