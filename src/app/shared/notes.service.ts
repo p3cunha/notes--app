@@ -25,8 +25,8 @@ export class NotesService {
 
   add(note: Note){
     let noteLength = this.notes.push(note) // push note into var
-    let index = noteLength -1 // id = index
-    return index
+    let index = noteLength -1 // id = index (i.e. note 1, index = 0)
+    return index  // index determine page link
   }
 
   update(id: number, title: string, body: string){

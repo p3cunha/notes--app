@@ -35,10 +35,11 @@ export class NoteDetailsComponent implements OnInit {
 
   onSubmit(form: NgForm){ //instance parameter as a form
     if (this.new) {
-    console.log(form);
+    console.log(form.value);
     this.notesService.add(form.value);
     this.router.navigateByUrl('/'); //navigate to anterior page 
     } else {
+      console.log(form.value);
       this.notesService.update(this.noteId, form.value.title, form.value.body);
       this.router.navigateByUrl('/');
     }

@@ -3,6 +3,7 @@
 
     <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
 
+        <!-- TITLE INPUT -->
         <div class="field">
             <label class="label">Title</label>
             <div class="control">
@@ -11,10 +12,11 @@
         </div>
     <br/>
 
+    <!-- CONTENT TEXTAREA -->
         <div class="field">
             <label class="label">Body</label>
             <div class="control">
-                <textarea class="textarea" name="body"[ngModel]="note.body">  </textarea>
+                <textarea class="textarea" name="body" [ngModel]="note.body">  </textarea>
             </div>
         </div>
 
