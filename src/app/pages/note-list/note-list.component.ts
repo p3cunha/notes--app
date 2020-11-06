@@ -124,10 +124,38 @@ export class NoteListComponent implements OnInit {
       let uniqueResults = this.removeDuplicate(allResults);
       //put them in filteredNotes list
       this.filteredNotes = uniqueResults;
+
+      // this.sortByRelevance(allResults)
     })
   }
 
+  //Calculate relevance of note based on number of it times appears on search result
+  // sortByRelevance(searchResult: Note[]){
 
+  //   let noteCountObj: object = {}; // key:value => NoteId:number (noteObjId:count)
+
+  //   searchResult.forEach(note => {
+
+  //     let noteId = this.notesService.getId(note);
+  //     //get the value that correspond to key, which is the value of noteId variable
+  //     if (noteCountObj[noteId]){
+  //       noteCountObj[noteId] += 1;
+  //     } else {
+  //       noteCountObj[noteId] = 1
+  //     }
+
+  //     this.filteredNotes = this.filteredNotes.sort((a: Note, b: Note) => {
+  //       let aId = this.notesService.getId(a);
+  //       let bId = this.notesService.getId(b);
+
+  //       let aCount = noteCountObj[aId];
+  //       let bCount = noteCountObj[bId];
+
+  //       return bCount - aCount
+  //     })
+
+  //   })
+  // }
 
   removeDuplicate(arr: Array<any>) : Array<any> { //receive array-like elements
     // set var as a Set (allow store unique values of any type)
