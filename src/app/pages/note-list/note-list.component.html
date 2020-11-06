@@ -5,7 +5,7 @@
         <!-- TOP INPUT -->
         <div class="field">
             <p class="control has-icons-left">
-              <input class="input" placeholder="Filter"
+              <input #filterInput class="input" placeholder="Filter"
               (keyup)="filter($event.target.value)">
               <span class="icon is-small is-left">
                   <!-- ICON FROM FONT AWESOME, IMPORTED IN index.html -->
@@ -18,10 +18,10 @@
 
             <!-- cardLink ITS A routerLink REFERENCED IN appNoteCard -->
             <app-note-card 
-            *ngFor="let note of filteredNotes, index as i" 
-            [cardLink]="i"
+            *ngFor="let note of filteredNotes" 
+            [cardLink]="genNoteURL(note)"
             [@itemAnim]
-            (delete)="receiveDeleteEventFromXButton(i)"
+            (delete)="receiveDeleteEventFromXButton(note)"
             [title]="note.title" 
             [body]="note.body">
             </app-note-card>

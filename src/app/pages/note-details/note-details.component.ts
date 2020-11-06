@@ -24,7 +24,7 @@ export class NoteDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.note = new Note(); // start form correctly
       if (params.id){ // if have Id - existing one
-        this.note = this.notesService.get(params.id); //push into note according id
+        this.note = this.notesService.getNoteById(params.id); //push into note according id
         this.noteId = params.id; //push id into noteId
         this.new = false  //its not a new note
       } else { // if haven't a id 

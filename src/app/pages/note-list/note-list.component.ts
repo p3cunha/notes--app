@@ -1,5 +1,5 @@
 import { style, trigger, transition, animate, query, stagger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Note } from 'src/app/shared/note.module';
 import { NotesService } from 'src/app/shared/notes.service';
@@ -91,6 +91,8 @@ export class NoteListComponent implements OnInit {
   notes: Note[] = new Array<Note>();
   filteredNotes: Note[] = new Array<Note>(); // created here to be used in template
 
+  @ViewChild('filterInput') inputElRef: ElementRef<HTMLInputElement>
+
   constructor(private notesService: NotesService) { }
 
   ngOnInit(): void {
@@ -100,8 +102,17 @@ export class NoteListComponent implements OnInit {
   }
 
   //receive event emitted from X-button in child component and call function below
-  receiveDeleteEventFromXButton(id: number){
-    this.notesService.delete(id)
+  receiveDeleteEventFromXButton(note: Note){
+    let noteId = this.notesService.getIdByNote(note)
+    this.notesService.delete(noteId)
+    //pass to filter method the current value typed on input
+    //this allow to show the correct notes on UI after delete one
+    this.filter(this.inputElRef.nativeElement.value)
+  }
+
+  genNoteURL(note: Note){
+    let noteId = this.notesService.getIdByNote(note)
+    return noteId
   }
 
   filter(query: string){

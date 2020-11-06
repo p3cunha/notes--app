@@ -15,11 +15,11 @@ export class NotesService {
     return this.notes
   }
 
-  get(id: number){
+  getNoteById(id: number){
     return this.notes[id]
   }
 
-  getId(note: Note){
+  getIdByNote(note: Note){
     return this.notes.indexOf(note)
   }
 
