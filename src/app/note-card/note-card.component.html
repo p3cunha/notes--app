@@ -1,9 +1,9 @@
-<!-- THIS IS ONE CARD -->
+<!-- THIS IS THE CARDS SCOPE -->
 <div #container class="note-card-container">
 
 <!-- ONLY CLICKs ON note DIV REDIRECT TO note-details, NOT CLICKs ON x-button -->
     <a [routerLink]="cardLink">
-   <!-- CONTENT OF CARD SCOLP -->
+   <!-- CONTENT OF CARD SCOPE -->
     <!-- CONTENT OF title AND body (@Input()) CAME FROM PARENT note-list -->
         <div class="note-card-content">
             <h1 class="note-card-title"> {{ title }} </h1>

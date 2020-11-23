@@ -115,11 +115,12 @@ export class NoteListComponent implements OnInit {
     return noteId
   }
 
+  //filter notes that matched to show on 'filteredNotes' list
   filter(query: string){
     query = query.toLowerCase().trim();
 
     let allResults: Note[] = new Array<Note>();
-    //remove searched terms spaces
+    //remove searched terms spaces and put them in a array
     let terms: string[] = query.split(' ');
     
     //remove duplicated terms
@@ -127,6 +128,7 @@ export class NoteListComponent implements OnInit {
 
     //find notes that matched with terms searched and put them in filteredNotes list
     terms.forEach(term => {
+      term = term.toLowerCase().trim();
       // store terms that matched
       let matchedResults = this.matchingNotes(term);
       // append to allResults array
